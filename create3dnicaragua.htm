@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CREATE 3D NICARAGUA | Servicios e Impresión 3D Profesional</title>
+  
+  <!-- Google Fonts & Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0F2540',
+              teal: '#00B29A',
+              amber: '#F3B229',
+              dark: '#081424',
+              card: 'rgba(15, 37, 64, 0.75)',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #081424;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .glass-card {
+      background: rgba(15, 37, 64, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 178, 154, 0.2);
+    }
+
+    .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-card-hover:hover {
+      transform: translateY(-8px);
+      border-color: rgba(243, 178, 41, 0.5);
+      box-shadow: 0 15px 35px -10px rgba(0, 178, 154, 0.3);
+    }
+
+    .glow-teal {
+      filter: drop-shadow(0 0 12px rgba(0, 178, 154, 0.4));
+    }
+
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #00B29A 0%, #F3B229 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #081424;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00B29A;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #F3B229;
+    }
+
+    .album-item {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-brand-teal selection:text-brand-navy">
+
+  <!-- Background Animated Canvas -->
+  <canvas id="bgCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-brand-teal/20 px-4 lg:px-8 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- LOGO OFICIAL (USANDO LA IMAGEN REAL) -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="bg-white/95 p-1.5 rounded-xl border border-brand-teal/40 shadow-lg group-hover:scale-105 transition-transform duration-300">
+          <img src="Logo impresion 3D.jpg" alt="CREATE 3D NICARAGUA Logo" class="h-10 md:h-12 w-auto object-contain">
+        </div>
+      </a>
+
+      <!-- Menu Items -->
+      <div class="hidden md:flex items-center gap-8 font-semibold text-sm">
+        <a href="#servicios" class="hover:text-brand-teal transition-colors">Servicios</a>
+        <a href="#simulador" class="hover:text-brand-amber transition-colors">En Vivo</a>
+        <a href="#catalogo" class="hover:text-brand-teal transition-colors">Catálogo de Trabajos</a>
+        <a href="#cotizar" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy font-bold hover:shadow-lg hover:shadow-brand-teal/30 transition-all transform hover:-translate-y-0.5">
+          Cotizar Proyecto
+        </a>
+      </div>
+
+      <!-- Mobile Button -->
+      <a href="#cotizar" class="md:hidden px-4 py-2 rounded-full bg-brand-teal text-brand-navy font-bold text-xs">
+        Cotizar
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 px-4 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Text Col -->
+      <div class="space-y-6 text-center lg:text-left z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-teal/40 text-brand-teal text-xs md:text-sm font-bold">
+          <span class="flex h-2 w-2 rounded-full bg-brand-amber animate-ping"></span>
+          Impresión y Modelado 3D Profesional en Nicaragua
+        </div>
+        
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+          Transformamos tus <span class="text-gradient">ideas en piezas</span> reales
+        </h1>
+        
+        <p class="text-gray-300 text-base md:text-lg max-w-xl mx-auto lg:mx-0">
+          Desde maquetas arquitectónicas y repuestos industriales hasta piezas de cosplay, prototipos de ingeniería y regalos personalizados. Calidad impecable con acabados profesionales.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+          <a href="#cotizar" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy font-extrabold text-lg shadow-lg shadow-brand-teal/20 hover:shadow-brand-amber/40 transition-all transform hover:-translate-y-1 flex items-center gap-3">
+            <i class="fa-brands fa-whatsapp text-2xl"></i> Cotizar por WhatsApp
+          </a>
+          <a href="#catalogo" class="px-8 py-4 rounded-xl glass-card text-white font-bold hover:border-brand-teal transition-all flex items-center gap-2">
+            Ver Álbum de Trabajos <i class="fa-solid fa-arrow-down text-brand-teal"></i>
+          </a>
+        </div>
+
+        <!-- Badges -->
+        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-800/80">
+          <div>
+            <h4 class="text-2xl md:text-3xl font-extrabold text-brand-teal">+500</h4>
+            <p class="text-xs text-gray-400">Piezas Entregadas</p>
+          </div>
+          <div>
+            <h4 class="text-2xl md:text-3xl font-extrabold text-brand-amber">100%</h4>
+            <p class="text-xs text-gray-400">Personalizado</p>
+          </div>
+          <div>
+            <h4 class="text-2xl md:text-3xl font-extrabold text-brand-teal">Envíos</h4>
+            <p class="text-xs text-gray-400">A todo el país</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Interactive Printer Widget -->
+      <div id="simulador" class="relative z-10">
+        <div class="glass-card rounded-2xl p-6 border-brand-teal/30 shadow-2xl relative overflow-hidden">
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-gray-700/50">
+            <div class="flex items-center gap-3">
+              <span class="h-3 w-3 rounded-full bg-red-500 inline-block"></span>
+              <span class="h-3 w-3 rounded-full bg-yellow-500 inline-block"></span>
+              <span class="h-3 w-3 rounded-full bg-green-500 inline-block"></span>
+              <span class="text-xs font-mono text-gray-400 ml-2">SIMULADOR_IMPRESION_3D.EXE</span>
+            </div>
+            <span class="text-xs font-bold text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full border border-brand-teal/30">
+              IMPRIMIENDO EN VIVO
+            </span>
+          </div>
+
+          <!-- Canvas Simulador Impresora -->
+          <div class="relative w-full h-72 md:h-80 bg-brand-dark/90 rounded-xl overflow-hidden border border-brand-teal/20 flex items-center justify-center">
+            <canvas id="printerCanvas" class="w-full h-full"></canvas>
+            
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center bg-brand-navy/80 backdrop-blur px-4 py-2 rounded-lg text-xs font-mono border border-gray-700">
+              <span class="text-brand-teal"><i class="fa-solid fa-temperature-high mr-1"></i> Boquilla: 220°C</span>
+              <span class="text-brand-amber"><i class="fa-solid fa-layer-group mr-1"></i> Capa: <span id="layerCounter">48</span>/120</span>
+              <span class="text-gray-300"><i class="fa-solid fa-clock mr-1"></i> Progreso: <span id="progressPercent">40</span>%</span>
+            </div>
+          </div>
+
+          <p class="text-center text-xs text-gray-400 mt-4">
+            Simulación digital de extrusión capa por capa con filamento dorado de alta resistencia.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATÁLOGO / ÁLBUM DE TRABAJOS REALIZADOS -->
+  <section id="catalogo" class="py-20 px-4 max-w-7xl mx-auto relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-xs font-bold text-brand-teal bg-brand-teal/10 px-4 py-1.5 rounded-full border border-brand-teal/30 uppercase tracking-widest">
+        Galería Real
+      </span>
+      <h2 class="text-3xl md:text-5xl font-extrabold mt-4 mb-4">
+        Álbum de <span class="text-gradient">Trabajos Realizados</span>
+      </h2>
+      <p class="text-gray-300 text-sm md:text-base">
+        Explora la calidad, precisión y variedad de proyectos fabricados para nuestros clientes.
+      </p>
+    </div>
+
+    <!-- Filtros de Categorías -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+      <button onclick="filterAlbum('all')" class="filter-btn active px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy shadow-lg" data-filter="all">
+        Todos los Trabajos
+      </button>
+      <button onclick="filterAlbum('maquetacion')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all glass-card hover:border-brand-teal text-gray-300" data-filter="maquetacion">
+        <i class="fa-solid fa-building-columns mr-1.5"></i> Maquetas
+      </button>
+      <button onclick="filterAlbum('industrial')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all glass-card hover:border-brand-amber text-gray-300" data-filter="industrial">
+        <i class="fa-solid fa-gears mr-1.5"></i> Piezas Industriales
+      </button>
+      <button onclick="filterAlbum('cosplay')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all glass-card hover:border-brand-teal text-gray-300" data-filter="cosplay">
+        <i class="fa-solid fa-mask mr-1.5"></i> Cosplay & Props
+      </button>
+      <button onclick="filterAlbum('regalos')" class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all glass-card hover:border-brand-amber text-gray-300" data-filter="regalos">
+        <i class="fa-solid fa-gift mr-1.5"></i> Regalos & Arte
+      </button>
+    </div>
+
+    <!-- Grid de Álbum -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="albumGrid">
+      
+      <!-- Proyecto 1 -->
+      <div class="album-item maquetacion glass-card rounded-2xl overflow-hidden glass-card-hover group cursor-pointer" onclick="openModal('Maqueta Urbana Escala 1:100', 'Impresión en resina de alta definición con ensamblaje modular y acabados arquitectónicos.', 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80')">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Maqueta Arquitectónica" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute top-3 left-3 bg-brand-navy/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-brand-teal border border-brand-teal/30">
+            MAQUETA
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-teal transition-colors">Maqueta Complejo Arquitectónico</h3>
+          <p class="text-xs text-gray-400 mb-4">Estructura modular detallada con tolerancia de ensamblaje impecable.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+            <span>PLA Pro + Resina</span>
+            <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="album-item industrial glass-card rounded-2xl overflow-hidden glass-card-hover group cursor-pointer" onclick="openModal('Engranajes Industriales en PETG', 'Sustitución de repuestos mecánicos con resistencia al desgaste y alta tolerancia térmica.', 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80')">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Piezas Industriales" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute top-3 left-3 bg-brand-navy/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-brand-amber border border-brand-amber/30">
+            INDUSTRIAL
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-amber transition-colors">Engranajes de Transmisión</h3>
+          <p class="text-xs text-gray-400 mb-4">Repuestos funcionales para maquinaria pesada con 100% de relleno.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+            <span>PETG-CF Carbono</span>
+            <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="album-item cosplay glass-card rounded-2xl overflow-hidden glass-card-hover group cursor-pointer" onclick="openModal('Casco Cyberpunk Tamaño Real 1:1', 'Impresión articulada por piezas, lijado, masillado y pintura con acabado metálico brillante.', 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80')">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80" alt="Cosplay Props" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute top-3 left-3 bg-brand-navy/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-brand-teal border border-brand-teal/30">
+            COSPLAY & PROPS
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-teal transition-colors">Casco Cyberpunk Acabado Espejo</h3>
+          <p class="text-xs text-gray-400 mb-4">Réplica tamaño real con vizor acrílico e iluminación LED integrada.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+            <span>Pintura Aerógrafo</span>
+            <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 4 -->
+      <div class="album-item regalos glass-card rounded-2xl overflow-hidden glass-card-hover group cursor-pointer" onclick="openModal('Lámpara de Luna Litofánica 3D', 'Impresión litofánica esférica que proyecta una imagen fotográfica al encender la luz interior.', 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80')">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Litofanía 3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute top-3 left-3 bg-brand-navy/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-brand-amber border border-brand-amber/30">
+            REGALO PERSONALIZADO
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-amber transition-colors">Lámpara Litofánica Personalizada</h3>
+          <p class="text-xs text-gray-400 mb-4">Regalo con foto grabada en relieve 3D sobre la superficie litofánica.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+            <span>PLA Blanco Neutro</span>
+            <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 5 -->
+      <div class="album-item industrial glass-card rounded-2xl overflow-hidden glass-card-hover group cursor-pointer" onclick="openModal('Carcasa Electrónica para Sensor IoT', 'Diseño customizado en CAD e impresión con sellado contra polvo y salpicaduras.', 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80')">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Carcasa Electrónica" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute top-3 left-3 bg-brand-navy/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-brand-amber border border-brand-amber/30">
+            PROTOTIPADO
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-amber transition-colors">Carcasa IoT Industrial</h3>
+          <p class="text-xs text-gray-400 mb-4">Ajuste perfecto para placas de circuito impreso y componentes.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+            <span>ABS Resistente</span>
+            <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 6 -->
+      <div class="album-item regalos glass-card rounded-2xl overflow-hidden glass-card-hover group cursor-pointer" onclick="openModal('Figura Coleccionable Pintada a Mano', 'Modelo ultra detallado impreso en resina 4K con pintado artístico minucioso.', 'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80')">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" alt="Figura Coleccionable" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <div class="absolute top-3 left-3 bg-brand-navy/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-brand-teal border border-brand-teal/30">
+            FIGURA 3D
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold mb-2 group-hover:text-brand-teal transition-colors">Figura Coleccionable Anime</h3>
+          <p class="text-xs text-gray-400 mb-4">Acabado suave sin líneas de capa visible y pintado profesional.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+            <span>Resina SLA 8K</span>
+            <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICIOS COMPLEMENTARIOS -->
+  <section id="servicios" class="py-16 px-4 bg-brand-navy/30 border-y border-brand-teal/10 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+        
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-teal/20 text-brand-teal flex-shrink-0 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-1">Diseño y Modelado 3D</h4>
+            <p class="text-gray-400 text-xs">¿Solo tienes la idea o un dibujo? Diseñamos el modelo 3D digital desde cero para ti.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-amber/20 text-brand-amber flex-shrink-0 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-paint-roller"></i>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-1">Post-Procesado y Pintura</h4>
+            <p class="text-gray-400 text-xs">Lijado, masillado, imprimación y pintura profesional con aerógrafo.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-teal/20 text-brand-teal flex-shrink-0 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-1">Envíos Nacionales</h4>
+            <p class="text-gray-400 text-xs">Empaque de alta protección para entregar tus piezas intactas en Managua y departamentos.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COTIZADOR DIRECTO POR WHATSAPP -->
+  <section id="cotizar" class="py-20 px-4 max-w-4xl mx-auto relative z-10">
+    <div class="glass-card rounded-3xl p-8 md:p-12 border-brand-amber/30 relative overflow-hidden shadow-2xl">
+      <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-teal/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold text-brand-amber bg-brand-amber/10 px-4 py-1.5 rounded-full border border-brand-amber/30 uppercase tracking-widest">
+          Atención Inmediata
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold mt-4 mb-3">
+          ¿Tienes un proyecto en mente?
+        </h2>
+        <p class="text-gray-300 text-sm md:text-base">
+          Llena los datos a continuación y nos pondremos en contacto contigo por WhatsApp al instante.
+        </p>
+      </div>
+
+      <form id="quoteForm" onsubmit="sendWhatsApp(event)" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tu Nombre</label>
+            <input type="text" id="clientName" required placeholder="Ej. Carlos Mendoza" class="w-full bg-brand-dark/80 border border-gray-700 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-teal text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tipo de Proyecto</label>
+            <select id="projectType" class="w-full bg-brand-dark/80 border border-gray-700 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-teal text-sm">
+              <option value="Maqueta Arquitectónica">Maqueta Arquitectónica</option>
+              <option value="Pieza / Repuesto Industrial">Pieza / Repuesto Industrial</option>
+              <option value="Cosplay / Máscara / Casco">Cosplay / Máscara / Casco</option>
+              <option value="Figura / Regalo Personalizado">Figura / Regalo Personalizado</option>
+              <option value="Modelado 3D desde Cero">Modelado 3D desde Cero</option>
+              <option value="Otro Servicio">Otro Servicio</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Detalles del Proyecto o Dimensiones Aproximadas</label>
+          <textarea id="projectDetails" rows="4" required placeholder="Describe qué quieres imprimir, dimensiones deseadas o si ya tienes el archivo 3D listo..." class="w-full bg-brand-dark/80 border border-gray-700 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-teal text-sm"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-teal via-brand-amber to-brand-teal bg-[length:200%_auto] text-brand-navy font-extrabold text-lg shadow-xl hover:shadow-brand-amber/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+          <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Mensaje a WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL (VISOR DE ÁLBUM) -->
+  <div id="imageModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full glass-card rounded-2xl overflow-hidden border-brand-teal/40 p-6">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="grid md:grid-cols-2 gap-6 items-center">
+        <div class="h-72 md:h-96 rounded-xl overflow-hidden">
+          <img id="modalImg" src="" alt="Detalle" class="w-full h-full object-cover">
+        </div>
+        <div class="space-y-4">
+          <span class="text-xs font-bold text-brand-amber bg-brand-amber/10 px-3 py-1 rounded-full border border-brand-amber/30">
+            PROYECTO DESTACADO
+          </span>
+          <h3 id="modalTitle" class="text-2xl font-extrabold text-white"></h3>
+          <p id="modalDesc" class="text-sm text-gray-300 leading-relaxed"></p>
+          <div class="pt-4 border-t border-gray-700">
+            <a href="#cotizar" onclick="closeModal()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-teal text-brand-navy font-bold text-sm">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Cotizar uno similar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="glass-card border-t border-brand-teal/20 py-12 px-4 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- LOGO FOOTER -->
+      <div class="flex items-center gap-3">
+        <div class="bg-white/95 p-1.5 rounded-xl border border-brand-teal/40">
+          <img src="Logo impresion 3D.jpg" alt="CREATE 3D NICARAGUA Logo" class="h-10 w-auto object-contain">
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-400 text-center">
+        © 2026 CREATE 3D NICARAGUA. Todos los derechos reservados. Impresión 3D y Modelado Profesional.
+      </p>
+
+      <div class="flex items-center gap-4 text-gray-400">
+        <a href="#" class="hover:text-brand-teal transition-colors text-lg"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="hover:text-brand-amber transition-colors text-lg"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-brand-teal transition-colors text-lg"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT SIMULADOR, FILTROS Y MODAL -->
+  <script>
+    // --- CANVAS BACKGROUND PARTICLES ---
+    const bgCanvas = document.getElementById('bgCanvas');
+    const bgCtx = bgCanvas.getContext('2d');
+
+    function resizeBg() {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeBg);
+    resizeBg();
+
+    const particles = Array.from({ length: 40 }, () => ({
+      x: Math.random() * bgCanvas.width,
+      y: Math.random() * bgCanvas.height,
+      radius: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      color: Math.random() > 0.5 ? '#00B29A' : '#F3B229'
+    }));
+
+    function animateBg() {
+      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > bgCanvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > bgCanvas.height) p.vy *= -1;
+
+        bgCtx.beginPath();
+        bgCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        bgCtx.fillStyle = p.color;
+        bgCtx.fill();
+      });
+      requestAnimationFrame(animateBg);
+    }
+    animateBg();
+
+    // --- PRINTER CANVAS SIMULATION ---
+    const printerCanvas = document.getElementById('printerCanvas');
+    const pCtx = printerCanvas.getContext('2d');
+
+    function resizePrinter() {
+      printerCanvas.width = printerCanvas.parentElement.clientWidth;
+      printerCanvas.height = printerCanvas.parentElement.clientHeight;
+    }
+    resizePrinter();
+
+    let layer = 0;
+    let headX = 50;
+    let dir = 1;
+
+    function drawPrinter() {
+      const w = printerCanvas.width;
+      const h = printerCanvas.height;
+
+      pCtx.clearRect(0, 0, w, h);
+
+      // Cama Caliente (Grid)
+      pCtx.strokeStyle = 'rgba(0, 178, 154, 0.2)';
+      pCtx.lineWidth = 1;
+      for (let x = 20; x < w - 20; x += 20) {
+        pCtx.beginPath();
+        pCtx.moveTo(x, h - 30);
+        pCtx.lineTo(x, h - 10);
+        pCtx.stroke();
+      }
+
+      // Base Cama
+      pCtx.fillStyle = '#0F2540';
+      pCtx.fillRect(20, h - 25, w - 40, 10);
+
+      // Pieza Imprimiéndose (Capas Doradas)
+      pCtx.fillStyle = '#F3B229';
+      for (let l = 0; l < layer; l++) {
+        const layerY = (h - 25) - (l * 1.5);
+        const layerWidth = Math.sin(l * 0.1) * 30 + (w * 0.4);
+        pCtx.fillRect((w / 2) - (layerWidth / 2), layerY, layerWidth, 1.2);
+      }
+
+      // Mover Boquilla
+      headX += 2 * dir;
+      if (headX > w - 80 || headX < 80) {
+        dir *= -1;
+        layer = (layer + 1) % 80;
+      }
+
+      const currentY = (h - 25) - (layer * 1.5);
+
+      // Eje X
+      pCtx.fillStyle = '#0F2540';
+      pCtx.fillRect(0, currentY - 30, w, 8);
+
+      // Boquilla / Hotend Extrusor
+      pCtx.fillStyle = '#00B29A';
+      pCtx.fillRect(headX - 15, currentY - 45, 30, 20);
+
+      // Punta Dorado
+      pCtx.fillStyle = '#F3B229';
+      pCtx.beginPath();
+      pCtx.moveTo(headX - 6, currentY - 25);
+      pCtx.lineTo(headX + 6, currentY - 25);
+      pCtx.lineTo(headX, currentY - 15);
+      pCtx.closePath();
+      pCtx.fill();
+
+      // Hilo de filamento extruido
+      pCtx.strokeStyle = '#F3B229';
+      pCtx.lineWidth = 2;
+      pCtx.beginPath();
+      pCtx.moveTo(headX, currentY - 15);
+      pCtx.lineTo(headX, currentY);
+      pCtx.stroke();
+
+      // UI Counter Updates
+      document.getElementById('layerCounter').innerText = layer;
+      document.getElementById('progressPercent').innerText = Math.round((layer / 80) * 100);
+
+      requestAnimationFrame(drawPrinter);
+    }
+    drawPrinter();
+
+    // --- FILTRAR ÁLBUM DE TRABAJOS ---
+    function filterAlbum(category) {
+      const items = document.querySelectorAll('.album-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        if(btn.dataset.filter === category) {
+          btn.classList.add('bg-gradient-to-r', 'from-brand-teal', 'to-brand-amber', 'text-brand-navy', 'shadow-lg');
+          btn.classList.remove('glass-card', 'text-gray-300');
+        } else {
+          btn.classList.remove('bg-gradient-to-r', 'from-brand-teal', 'to-brand-amber', 'text-brand-navy', 'shadow-lg');
+          btn.classList.add('glass-card', 'text-gray-300');
+        }
+      });
+
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // --- MODAL / VISOR ---
+    function openModal(title, desc, imgSrc) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('imageModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+    }
+
+    // --- WHATSAPP FORM SCRIPT ---
+    function sendWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('clientName').value;
+      const type = document.getElementById('projectType').value;
+      const details = document.getElementById('projectDetails').value;
+
+      const phone = "50588888888"; // Reemplaza con tu número de WhatsApp oficial
+
+      const message = `Hola CREATE 3D NICARAGUA, mi nombre es *${name}*.\n\nMe gustaría cotizar un proyecto:\n- *Tipo:* ${type}\n- *Detalles:* ${details}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+    }
+  </script>
+</body>
+</html>
