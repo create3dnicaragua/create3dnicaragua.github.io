@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CREATE 3D NICARAGUA | Servicios e Impresión 3D Profesional</title>
-  
+  <title>CREATE 3D NICARAGUA | Impresión & Modelado 3D Profesional</title>
+
   <!-- Google Fonts & Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+
 
   <script>
     tailwind.config = {
@@ -16,11 +21,10 @@
         extend: {
           colors: {
             brand: {
-              navy: '#0F2540',
+              navy: '#0b192e',
               teal: '#00B29A',
               amber: '#F3B229',
-              dark: '#081424',
-              card: 'rgba(15, 37, 64, 0.75)',
+              dark: '#060e1a',
             }
           },
           fontFamily: {
@@ -33,17 +37,18 @@
 
   <style>
     body {
-      background-color: #081424;
+      background-color: #060e1a;
       color: #E2E8F0;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
     }
 
+    /* Tarjetas tipo Glassmorphism suave */
     .glass-card {
-      background: rgba(15, 37, 64, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 178, 154, 0.2);
+      background: rgba(11, 25, 46, 0.45);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 178, 154, 0.15);
     }
 
     .glass-card-hover {
@@ -52,19 +57,44 @@
 
     .glass-card-hover:hover {
       transform: translateY(-8px);
-      border-color: rgba(243, 178, 41, 0.5);
-      box-shadow: 0 15px 35px -10px rgba(0, 178, 154, 0.3);
+      border-color: rgba(243, 178, 41, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 178, 154, 0.25);
     }
 
-    .glow-teal {
-      filter: drop-shadow(0 0 12px rgba(0, 178, 154, 0.4));
-    }
-
-    /* Gradient Text */
+    /* Texto con Degradado Elegante */
     .text-gradient {
       background: linear-gradient(135deg, #00B29A 0%, #F3B229 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    /* Integración Orgánica del Logo Transparente con Resplandor (PNG/WebP) */
+    .brand-logo-img {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: drop-shadow(0 0 25px rgba(0, 178, 154, 0.5)) 
+              drop-shadow(0 0 50px rgba(243, 178, 41, 0.25));
+      transition: all 0.5s ease-in-out;
+    }
+
+    .brand-logo-img:hover {
+      filter: drop-shadow(0 0 35px rgba(0, 178, 154, 0.8)) 
+              drop-shadow(0 0 75px rgba(243, 178, 41, 0.5));
+      transform: scale(1.03);
+    }
+
+    /* Luz de aura trasera suave */
+    .hero-glow-aurora {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 178, 154, 0.22) 0%, rgba(243, 178, 41, 0.1) 45%, rgba(6, 14, 26, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(40px);
     }
 
     /* Custom Scrollbar */
@@ -72,7 +102,7 @@
       width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #081424;
+      background: #060e1a;
     }
     ::-webkit-scrollbar-thumb {
       background: #00B29A;
@@ -89,18 +119,19 @@
 </head>
 <body class="relative min-h-screen selection:bg-brand-teal selection:text-brand-navy">
 
-  <!-- Background Animated Canvas -->
-  <canvas id="bgCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+  <!-- Background Animated Canvas (Partículas) -->
+  <canvas id="bgCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-30"></canvas>
 
-  <!-- NAVIGATION BAR -->
-  <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-brand-teal/20 px-4 lg:px-8 py-3">
+  <!-- NAVIGATION BAR (Limpia y Flotante) -->
+  <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-brand-teal/10 px-4 lg:px-8 py-4">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- LOGO OFICIAL (USANDO LA IMAGEN REAL) -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="bg-white/95 p-1.5 rounded-xl border border-brand-teal/40 shadow-lg group-hover:scale-105 transition-transform duration-300">
-          <img src="logo.jpg" alt="CREATE 3D NICARAGUA Logo" class="h-10 md:h-12 w-auto object-contain">
-        </div>
+      <!-- Logo Tipográfico Minimalista para el Header -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-3 h-3 rounded-full bg-brand-teal animate-pulse"></div>
+        <span class="text-white font-extrabold tracking-wider text-base md:text-lg">
+          CREATE 3D <span class="text-brand-amber">NICARAGUA</span>
+        </span>
       </a>
 
       <!-- Menu Items -->
@@ -108,7 +139,7 @@
         <a href="#servicios" class="hover:text-brand-teal transition-colors">Servicios</a>
         <a href="#simulador" class="hover:text-brand-amber transition-colors">En Vivo</a>
         <a href="#catalogo" class="hover:text-brand-teal transition-colors">Catálogo de Trabajos</a>
-        <a href="#cotizar" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy font-bold hover:shadow-lg hover:shadow-brand-teal/30 transition-all transform hover:-translate-y-0.5">
+        <a href="#cotizar" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy font-bold hover:shadow-lg hover:shadow-brand-teal/30 transition-all transform hover:-translate-y-0.5">
           Cotizar Proyecto
         </a>
       </div>
@@ -120,27 +151,45 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 px-4 max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
+  <!-- HERO SECTION CON LOGO PNG/WEBP INTEGRADO AL FONDO -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 px-4 max-w-7xl mx-auto overflow-hidden">
+    
+    <!-- Resplandor ambiental de fondo tras la marca -->
+    <div class="hero-glow-aurora -top-10 -left-10"></div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
       
-      <!-- Text Col -->
-      <div class="space-y-6 text-center lg:text-left z-10">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-teal/40 text-brand-teal text-xs md:text-sm font-bold">
-          <span class="flex h-2 w-2 rounded-full bg-brand-amber animate-ping"></span>
-          Impresión y Modelado 3D Profesional en Nicaragua
+      <!-- Text & Brand Col -->
+      <div class="space-y-8 text-center lg:text-left">
+        
+        <!-- LOGO EN IMAGEN TRANSPARENTE FUSIONADO AL FONDO -->
+        <div class="relative flex justify-center lg:justify-start items-center">
+          <div class="relative group cursor-pointer">
+            
+            <!-- Etiqueta <img> con imagen transparente (logo.png / logo.webp) y fallbacks en caso de no encontrarse -->
+            <img id="mainLogo" 
+                 src="logo.png" 
+                 alt="CREATE 3D Nicaragua Logo" 
+                 onerror="this.onerror=null; this.src='logo.webp'; this.onerror=function(){ this.src='https://placehold.co/300x300/00b29a/ffffff?text=CREATE+3D'; }"
+                 class="brand-logo-img h-40 md:h-52 w-auto object-contain max-w-full drop-shadow-2xl">
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-teal/30 text-brand-teal text-xs md:text-sm font-bold">
+          <span class="flex h-2.5 w-2.5 rounded-full bg-brand-amber animate-ping"></span>
+          Servicios de Impresión & Modelado 3D Profesional en Nicaragua
         </div>
         
-        <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight">
           Transformamos tus <span class="text-gradient">ideas en piezas</span> reales
         </h1>
         
-        <p class="text-gray-300 text-base md:text-lg max-w-xl mx-auto lg:mx-0">
+        <p class="text-gray-300 text-base md:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
           Desde maquetas arquitectónicas y repuestos industriales hasta piezas de cosplay, prototipos de ingeniería y regalos personalizados. Calidad impecable con acabados profesionales.
         </p>
 
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-          <a href="#cotizar" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy font-extrabold text-lg shadow-lg shadow-brand-teal/20 hover:shadow-brand-amber/40 transition-all transform hover:-translate-y-1 flex items-center gap-3">
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#cotizar" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-teal to-brand-amber text-brand-navy font-extrabold text-lg shadow-xl shadow-brand-teal/20 hover:shadow-brand-amber/30 transition-all transform hover:-translate-y-1 flex items-center gap-3">
             <i class="fa-brands fa-whatsapp text-2xl"></i> Cotizar por WhatsApp
           </a>
           <a href="#catalogo" class="px-8 py-4 rounded-xl glass-card text-white font-bold hover:border-brand-teal transition-all flex items-center gap-2">
@@ -148,31 +197,31 @@
           </a>
         </div>
 
-        <!-- Badges -->
+        <!-- Badges / Métricas -->
         <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-800/80">
           <div>
             <h4 class="text-2xl md:text-3xl font-extrabold text-brand-teal">+500</h4>
-            <p class="text-xs text-gray-400">Piezas Entregadas</p>
+            <p class="text-xs text-gray-400 font-medium">Piezas Entregadas</p>
           </div>
           <div>
             <h4 class="text-2xl md:text-3xl font-extrabold text-brand-amber">100%</h4>
-            <p class="text-xs text-gray-400">Personalizado</p>
+            <p class="text-xs text-gray-400 font-medium">Personalizado</p>
           </div>
           <div>
             <h4 class="text-2xl md:text-3xl font-extrabold text-brand-teal">Envíos</h4>
-            <p class="text-xs text-gray-400">A todo el país</p>
+            <p class="text-xs text-gray-400 font-medium">A todo el país</p>
           </div>
         </div>
       </div>
 
       <!-- Live Interactive Printer Widget -->
       <div id="simulador" class="relative z-10">
-        <div class="glass-card rounded-2xl p-6 border-brand-teal/30 shadow-2xl relative overflow-hidden">
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-gray-700/50">
+        <div class="glass-card rounded-3xl p-6 border-brand-teal/20 shadow-2xl relative overflow-hidden">
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-gray-800">
             <div class="flex items-center gap-3">
-              <span class="h-3 w-3 rounded-full bg-red-500 inline-block"></span>
-              <span class="h-3 w-3 rounded-full bg-yellow-500 inline-block"></span>
-              <span class="h-3 w-3 rounded-full bg-green-500 inline-block"></span>
+              <span class="h-3 w-3 rounded-full bg-red-500/80 inline-block"></span>
+              <span class="h-3 w-3 rounded-full bg-yellow-500/80 inline-block"></span>
+              <span class="h-3 w-3 rounded-full bg-green-500/80 inline-block"></span>
               <span class="text-xs font-mono text-gray-400 ml-2">SIMULADOR_IMPRESION_3D.EXE</span>
             </div>
             <span class="text-xs font-bold text-brand-teal bg-brand-teal/10 px-3 py-1 rounded-full border border-brand-teal/30">
@@ -181,17 +230,17 @@
           </div>
 
           <!-- Canvas Simulador Impresora -->
-          <div class="relative w-full h-72 md:h-80 bg-brand-dark/90 rounded-xl overflow-hidden border border-brand-teal/20 flex items-center justify-center">
+          <div class="relative w-full h-72 md:h-80 bg-brand-dark/95 rounded-2xl overflow-hidden border border-brand-teal/20 flex items-center justify-center">
             <canvas id="printerCanvas" class="w-full h-full"></canvas>
             
-            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center bg-brand-navy/80 backdrop-blur px-4 py-2 rounded-lg text-xs font-mono border border-gray-700">
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center bg-brand-navy/90 backdrop-blur px-4 py-2.5 rounded-xl text-xs font-mono border border-gray-800">
               <span class="text-brand-teal"><i class="fa-solid fa-temperature-high mr-1"></i> Boquilla: 220°C</span>
               <span class="text-brand-amber"><i class="fa-solid fa-layer-group mr-1"></i> Capa: <span id="layerCounter">48</span>/120</span>
               <span class="text-gray-300"><i class="fa-solid fa-clock mr-1"></i> Progreso: <span id="progressPercent">40</span>%</span>
             </div>
           </div>
 
-          <p class="text-center text-xs text-gray-400 mt-4">
+          <p class="text-center text-xs text-gray-400 mt-4 font-medium">
             Simulación digital de extrusión capa por capa con filamento dorado de alta resistencia.
           </p>
         </div>
@@ -247,7 +296,7 @@
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 group-hover:text-brand-teal transition-colors">Maqueta Complejo Arquitectónico</h3>
           <p class="text-xs text-gray-400 mb-4">Estructura modular detallada con tolerancia de ensamblaje impecable.</p>
-          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-800 pt-3">
             <span>PLA Pro + Resina</span>
             <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
           </div>
@@ -265,7 +314,7 @@
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 group-hover:text-brand-amber transition-colors">Engranajes de Transmisión</h3>
           <p class="text-xs text-gray-400 mb-4">Repuestos funcionales para maquinaria pesada con 100% de relleno.</p>
-          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-800 pt-3">
             <span>PETG-CF Carbono</span>
             <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
           </div>
@@ -282,8 +331,8 @@
         </div>
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 group-hover:text-brand-teal transition-colors">Casco Cyberpunk Acabado Espejo</h3>
-          <p class="text-xs text-gray-400 mb-4">Réplica tamaño real con vizor acrílico e iluminación LED integrada.</p>
-          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+          <p class="text-xs text-gray-400 mb-4">Réplica tamaño real con visor acrílico e iluminación LED integrada.</p>
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-800 pt-3">
             <span>Pintura Aerógrafo</span>
             <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
           </div>
@@ -301,7 +350,7 @@
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 group-hover:text-brand-amber transition-colors">Lámpara Litofánica Personalizada</h3>
           <p class="text-xs text-gray-400 mb-4">Regalo con foto grabada en relieve 3D sobre la superficie litofánica.</p>
-          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-800 pt-3">
             <span>PLA Blanco Neutro</span>
             <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
           </div>
@@ -319,7 +368,7 @@
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 group-hover:text-brand-amber transition-colors">Carcasa IoT Industrial</h3>
           <p class="text-xs text-gray-400 mb-4">Ajuste perfecto para placas de circuito impreso y componentes.</p>
-          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-800 pt-3">
             <span>ABS Resistente</span>
             <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
           </div>
@@ -337,7 +386,7 @@
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 group-hover:text-brand-teal transition-colors">Figura Coleccionable Anime</h3>
           <p class="text-xs text-gray-400 mb-4">Acabado suave sin líneas de capa visible y pintado profesional.</p>
-          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-700/50 pt-3">
+          <div class="flex justify-between items-center text-xs font-mono text-gray-400 border-t border-gray-800 pt-3">
             <span>Resina SLA 8K</span>
             <span class="text-brand-amber font-bold">Ver proyecto <i class="fa-solid fa-arrow-right ml-1"></i></span>
           </div>
@@ -348,37 +397,37 @@
   </section>
 
   <!-- SERVICIOS COMPLEMENTARIOS -->
-  <section id="servicios" class="py-16 px-4 bg-brand-navy/30 border-y border-brand-teal/10 relative z-10">
+  <section id="servicios" class="py-16 px-4 bg-brand-navy/20 border-y border-brand-teal/10 relative z-10">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
         
         <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
-          <div class="w-12 h-12 rounded-full bg-brand-teal/20 text-brand-teal flex-shrink-0 flex items-center justify-center text-xl">
+          <div class="w-12 h-12 rounded-2xl bg-brand-teal/20 text-brand-teal flex-shrink-0 flex items-center justify-center text-xl shadow-lg border border-brand-teal/30">
             <i class="fa-solid fa-cube"></i>
           </div>
           <div>
             <h4 class="text-lg font-bold mb-1">Diseño y Modelado 3D</h4>
-            <p class="text-gray-400 text-xs">¿Solo tienes la idea o un dibujo? Diseñamos el modelo 3D digital desde cero para ti.</p>
+            <p class="text-gray-400 text-xs leading-relaxed">¿Solo tienes la idea o un dibujo? Diseñamos el modelo 3D digital desde cero para ti con software CAD.</p>
           </div>
         </div>
 
         <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
-          <div class="w-12 h-12 rounded-full bg-brand-amber/20 text-brand-amber flex-shrink-0 flex items-center justify-center text-xl">
+          <div class="w-12 h-12 rounded-2xl bg-brand-amber/20 text-brand-amber flex-shrink-0 flex items-center justify-center text-xl shadow-lg border border-brand-amber/30">
             <i class="fa-solid fa-paint-roller"></i>
           </div>
           <div>
             <h4 class="text-lg font-bold mb-1">Post-Procesado y Pintura</h4>
-            <p class="text-gray-400 text-xs">Lijado, masillado, imprimación y pintura profesional con aerógrafo.</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Lijado, masillado, imprimación y pintura profesional con aerógrafo para acabados impecables.</p>
           </div>
         </div>
 
         <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
-          <div class="w-12 h-12 rounded-full bg-brand-teal/20 text-brand-teal flex-shrink-0 flex items-center justify-center text-xl">
+          <div class="w-12 h-12 rounded-2xl bg-brand-teal/20 text-brand-teal flex-shrink-0 flex items-center justify-center text-xl shadow-lg border border-brand-teal/30">
             <i class="fa-solid fa-truck-fast"></i>
           </div>
           <div>
             <h4 class="text-lg font-bold mb-1">Envíos Nacionales</h4>
-            <p class="text-gray-400 text-xs">Empaque de alta protección para entregar tus piezas intactas en Managua y departamentos.</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Empaque de alta protección para entregar tus piezas intactas en Managua y todos los departamentos.</p>
           </div>
         </div>
 
@@ -388,8 +437,8 @@
 
   <!-- COTIZADOR DIRECTO POR WHATSAPP -->
   <section id="cotizar" class="py-20 px-4 max-w-4xl mx-auto relative z-10">
-    <div class="glass-card rounded-3xl p-8 md:p-12 border-brand-amber/30 relative overflow-hidden shadow-2xl">
-      <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-teal/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="glass-card rounded-3xl p-8 md:p-12 border-brand-amber/20 relative overflow-hidden shadow-2xl">
+      <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-teal/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="text-center mb-10">
         <span class="text-xs font-bold text-brand-amber bg-brand-amber/10 px-4 py-1.5 rounded-full border border-brand-amber/30 uppercase tracking-widest">
@@ -407,11 +456,11 @@
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tu Nombre</label>
-            <input type="text" id="clientName" required placeholder="Ej. Carlos Mendoza" class="w-full bg-brand-dark/80 border border-gray-700 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-teal text-sm">
+            <input type="text" id="clientName" required placeholder="Ej. Carlos Mendoza" class="w-full bg-brand-dark/90 border border-gray-800 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-teal text-sm transition-all">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tipo de Proyecto</label>
-            <select id="projectType" class="w-full bg-brand-dark/80 border border-gray-700 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-teal text-sm">
+            <select id="projectType" class="w-full bg-brand-dark/90 border border-gray-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-teal text-sm transition-all">
               <option value="Maqueta Arquitectónica">Maqueta Arquitectónica</option>
               <option value="Pieza / Repuesto Industrial">Pieza / Repuesto Industrial</option>
               <option value="Cosplay / Máscara / Casco">Cosplay / Máscara / Casco</option>
@@ -424,7 +473,7 @@
 
         <div>
           <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Detalles del Proyecto o Dimensiones Aproximadas</label>
-          <textarea id="projectDetails" rows="4" required placeholder="Describe qué quieres imprimir, dimensiones deseadas o si ya tienes el archivo 3D listo..." class="w-full bg-brand-dark/80 border border-gray-700 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-teal text-sm"></textarea>
+          <textarea id="projectDetails" rows="4" required placeholder="Describe qué quieres imprimir, dimensiones deseadas o si ya tienes el archivo 3D listo..." class="w-full bg-brand-dark/90 border border-gray-800 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-teal text-sm transition-all"></textarea>
         </div>
 
         <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-teal via-brand-amber to-brand-teal bg-[length:200%_auto] text-brand-navy font-extrabold text-lg shadow-xl hover:shadow-brand-amber/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
@@ -436,12 +485,12 @@
 
   <!-- LIGHTBOX MODAL (VISOR DE ÁLBUM) -->
   <div id="imageModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="relative max-w-4xl w-full glass-card rounded-2xl overflow-hidden border-brand-teal/40 p-6">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10">
+    <div class="relative max-w-4xl w-full glass-card rounded-3xl overflow-hidden border-brand-teal/40 p-6">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl z-10 transition-colors">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div class="grid md:grid-cols-2 gap-6 items-center">
-        <div class="h-72 md:h-96 rounded-xl overflow-hidden">
+        <div class="h-72 md:h-96 rounded-2xl overflow-hidden">
           <img id="modalImg" src="" alt="Detalle" class="w-full h-full object-cover">
         </div>
         <div class="space-y-4">
@@ -450,7 +499,7 @@
           </span>
           <h3 id="modalTitle" class="text-2xl font-extrabold text-white"></h3>
           <p id="modalDesc" class="text-sm text-gray-300 leading-relaxed"></p>
-          <div class="pt-4 border-t border-gray-700">
+          <div class="pt-4 border-t border-gray-800">
             <a href="#cotizar" onclick="closeModal()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-teal text-brand-navy font-bold text-sm">
               <i class="fa-brands fa-whatsapp text-lg"></i> Cotizar uno similar
             </a>
@@ -460,15 +509,15 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="glass-card border-t border-brand-teal/20 py-12 px-4 relative z-10">
+  <!-- FOOTER ORGANICO -->
+  <footer class="glass-card border-t border-brand-teal/10 py-12 px-4 relative z-10">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       
-      <!-- LOGO FOOTER -->
+      <!-- Marca integrada en Footer -->
       <div class="flex items-center gap-3">
-        <div class="bg-white/95 p-1.5 rounded-xl border border-brand-teal/40">
-          <img src="Logo impresion 3D.jpg" alt="CREATE 3D NICARAGUA Logo" class="h-10 w-auto object-contain">
-        </div>
+        <span class="text-white font-extrabold tracking-wider text-base">
+          CREATE 3D <span class="text-brand-amber">NICARAGUA</span>
+        </span>
       </div>
 
       <p class="text-xs text-gray-400 text-center">
@@ -478,13 +527,13 @@
       <div class="flex items-center gap-4 text-gray-400">
         <a href="#" class="hover:text-brand-teal transition-colors text-lg"><i class="fa-brands fa-facebook"></i></a>
         <a href="#" class="hover:text-brand-amber transition-colors text-lg"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="hover:text-brand-teal transition-colors text-lg"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="hover:text-brand-tiktok transition-colors text-lg"><i class="fa-brands fa-tiktok"></i></a>
       </div>
 
     </div>
   </footer>
 
-  <!-- SCRIPT SIMULADOR, FILTROS Y MODAL -->
+  <!-- SCRIPTS -->
   <script>
     // --- CANVAS BACKGROUND PARTICLES ---
     const bgCanvas = document.getElementById('bgCanvas');
@@ -528,9 +577,11 @@
     const pCtx = printerCanvas.getContext('2d');
 
     function resizePrinter() {
+      if(!printerCanvas.parentElement) return;
       printerCanvas.width = printerCanvas.parentElement.clientWidth;
       printerCanvas.height = printerCanvas.parentElement.clientHeight;
     }
+    window.addEventListener('resize', resizePrinter);
     resizePrinter();
 
     let layer = 0;
@@ -544,7 +595,7 @@
       pCtx.clearRect(0, 0, w, h);
 
       // Cama Caliente (Grid)
-      pCtx.strokeStyle = 'rgba(0, 178, 154, 0.2)';
+      pCtx.strokeStyle = 'rgba(0, 178, 154, 0.15)';
       pCtx.lineWidth = 1;
       for (let x = 20; x < w - 20; x += 20) {
         pCtx.beginPath();
@@ -554,7 +605,7 @@
       }
 
       // Base Cama
-      pCtx.fillStyle = '#0F2540';
+      pCtx.fillStyle = '#0b192e';
       pCtx.fillRect(20, h - 25, w - 40, 10);
 
       // Pieza Imprimiéndose (Capas Doradas)
@@ -575,7 +626,7 @@
       const currentY = (h - 25) - (layer * 1.5);
 
       // Eje X
-      pCtx.fillStyle = '#0F2540';
+      pCtx.fillStyle = '#0b192e';
       pCtx.fillRect(0, currentY - 30, w, 8);
 
       // Boquilla / Hotend Extrusor
@@ -600,8 +651,10 @@
       pCtx.stroke();
 
       // UI Counter Updates
-      document.getElementById('layerCounter').innerText = layer;
-      document.getElementById('progressPercent').innerText = Math.round((layer / 80) * 100);
+      const layerEl = document.getElementById('layerCounter');
+      const progressEl = document.getElementById('progressPercent');
+      if(layerEl) layerEl.innerText = layer;
+      if(progressEl) progressEl.innerText = Math.round((layer / 80) * 100);
 
       requestAnimationFrame(drawPrinter);
     }
@@ -631,31 +684,32 @@
       });
     }
 
-    // --- MODAL / VISOR ---
+    // --- MODAL DE IMÁGENES (LIGHTBOX) ---
     function openModal(title, desc, imgSrc) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalDesc').innerText = desc;
       document.getElementById('modalImg').src = imgSrc;
       document.getElementById('imageModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       document.getElementById('imageModal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
     }
 
-    // --- WHATSAPP FORM SCRIPT ---
+    // --- ENVIAR A WHATSAPP ---
     function sendWhatsApp(e) {
       e.preventDefault();
       const name = document.getElementById('clientName').value;
       const type = document.getElementById('projectType').value;
       const details = document.getElementById('projectDetails').value;
 
-      const phone = "50588888888"; // Reemplaza con tu número de WhatsApp oficial
-
-      const message = `Hola CREATE 3D NICARAGUA, mi nombre es *${name}*.\n\nMe gustaría cotizar un proyecto:\n- *Tipo:* ${type}\n- *Detalles:* ${details}`;
-
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+      const phone = "50588888888"; // Reemplazar con el número real de Nicaragua
+      const message = `Hola, mi nombre es *${name}*.\nMe interesa cotizar el siguiente proyecto:\n*Tipo:* ${type}\n*Detalles:* ${details}`;
+      
+      const encodedURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(encodedURL, '_blank');
     }
   </script>
 </body>
